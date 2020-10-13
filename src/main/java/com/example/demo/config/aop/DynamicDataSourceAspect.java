@@ -2,7 +2,7 @@ package com.example.demo.config.aop;
 
 
 import com.example.demo.config.DataSourceContextHolder;
-import com.example.demo.config.rete.DataSource;
+import com.example.demo.config.rete.DataSource11;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -19,7 +19,8 @@ import java.lang.reflect.Method;
 //@Order 值越小，优先级越高
 public class DynamicDataSourceAspect {
     @SuppressWarnings("rawtypes")
-    @Before("@annotation(DataSource)")
+//    @Before("@annotation(DataSource11)")
+    @Before("@annotation(com.example.demo.config.rete.DataSource11)")
     public void before(JoinPoint point){
 
         //获取当前访问的类名
@@ -38,8 +39,8 @@ public class DynamicDataSourceAspect {
             //获取访问的方法对象
             Method method = className.getMethod(methodName, argClass);
             //判断是否存在@DataSource注解
-            if(method.isAnnotationPresent(DataSource.class)){
-                DataSource annotation = method.getAnnotation(DataSource.class);
+            if(method.isAnnotationPresent(DataSource11.class)){
+                DataSource11 annotation = method.getAnnotation(DataSource11.class);
                 //获取注解中指定的数据源
                 dataSource = annotation.value();
             }
@@ -51,7 +52,9 @@ public class DynamicDataSourceAspect {
         DataSourceContextHolder.setDB(dataSource);
     }
 
-    @After("@annotation(DataSource)")
+//    @After("@annotation(DataSource11)")
+    @After("@annotation(com.example.demo.config.rete.DataSource11)")
+
     public void after(JoinPoint point){
         DataSourceContextHolder.clearDB();
     }

@@ -18,14 +18,14 @@ public class DemomybatispagApplication {
 
 
 	//配置mybatis的分页插件pageHelper
-	@Bean
-	public PageHelper pageHelper() {
-		PageHelper pageHelper = new PageHelper();
-		Properties props = new Properties();
-		props.setProperty("dialect", "mysql");
-		// 表示支持从接口中读取pageNum和pageSize
-		props.setProperty("supportMethodsArguments", "true");
-		pageHelper.setProperties(props);
-		return pageHelper;
-	}
+//	@Bean
+//	public PageHelper pageHelper() {
+//		PageHelper pageHelper = new PageHelper();
+//		Properties props = new Properties();
+//		props.setProperty("dialect", "mysql");
+//		// 表示支持从接口中读取pageNum和pageSize
+//		props.setProperty("supportMethodsArguments", "true");
+//		pageHelper.setProperties(props);
+//		return pageHelper;
+//	}
 }
